@@ -173,14 +173,14 @@ services:
     volumes:
       - node1-data:/home/indy/ledger
 
-  faber:
+  upm:
     image: indy-agentjs
     command: "bash -c 'sleep 10; npm start'"
     environment:
       - ICON_SRC=https://cdn2.iconfinder.com/data/icons/bubble-education-icons-1/360/School-512.png
       - THEME=OliveDrab
       - PORT=3002
-      - NAME=UPM3uVtyrK616UYBcsB1r9npA
+      - NAME=UPM
       - EMAIL=admin@upm.es
       - PASSWORD=123
       - USERNAME=upm
