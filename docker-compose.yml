@@ -180,7 +180,7 @@ services:
       - ICON_SRC=https://cdn2.iconfinder.com/data/icons/bubble-education-icons-1/360/School-512.png
       - THEME=OliveDrab
       - PORT=3002
-      - NAME=UPM
+      - NAME=UPM3uVtyrK616UYBcsB1r9npA
       - EMAIL=admin@upm.es
       - PASSWORD=123
       - USERNAME=upm
