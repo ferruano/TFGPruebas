@@ -113,7 +113,7 @@ services:
   #
   # Agents
   #
-  alice:
+  marcos:
     image: indy-agentjs
     build:
       context: .
@@ -123,10 +123,10 @@ services:
       - ICON_SRC=https://maxcdn.icons8.com/Share/icon/Users/person_female1600.png
       - THEME=DarkGray
       - PORT=3000
-      - NAME=Alice
-      - EMAIL=alice@faber.edu
+      - NAME=Marcos
+      - EMAIL=marcos@upm.es
       - PASSWORD=123
-      - USERNAME=alice
+      - USERNAME=marcos
       - PUBLIC_DID_ENDPOINT=173.17.0.150:3000
       - RUST_LOG=${RUST_LOG}
       - TEST_POOL_IP=${TEST_POOL_IP}
@@ -180,10 +180,10 @@ services:
       - ICON_SRC=https://cdn2.iconfinder.com/data/icons/bubble-education-icons-1/360/School-512.png
       - THEME=OliveDrab
       - PORT=3002
-      - NAME=Faber College
-      - EMAIL=admin@faber.edu
+      - NAME=UPM
+      - EMAIL=admin@upm.es
       - PASSWORD=123
-      - USERNAME=faber
+      - USERNAME=upm
       - PUBLIC_DID_ENDPOINT=173.17.0.170:3002
       - RUST_LOG=${RUST_LOG}
       - TEST_POOL_IP=${TEST_POOL_IP}
