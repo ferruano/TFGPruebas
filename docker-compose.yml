@@ -225,7 +225,7 @@ services:
       - marcos
     networks:
       services:
-        ipvhttps://github.com/ferruano/TFGPruebas.git4_address: 173.17.0.180
+        ipv4_address: 173.17.0.180
     volumes:
       - node1-data:/home/indy/ledger
 
