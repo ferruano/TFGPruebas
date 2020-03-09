@@ -166,7 +166,7 @@ services:
       - node2
       - node3
       - node4
-      - alice
+      - marcos
     networks:
       services:
         ipv4_address: 173.17.0.160
@@ -194,7 +194,7 @@ services:
       - node2
       - node3
       - node4
-      - alice
+      - marcos
     networks:
       services:
         ipv4_address: 173.17.0.170
@@ -222,10 +222,10 @@ services:
       - node2
       - node3
       - node4
-      - alice
+      - marcos
     networks:
       services:
-        ipv4_address: 173.17.0.180
+        ipvhttps://github.com/ferruano/TFGPruebas.git4_address: 173.17.0.180
     volumes:
       - node1-data:/home/indy/ledger
 
@@ -250,7 +250,7 @@ services:
       - node2
       - node3
       - node4
-      - alice
+      - marcos
     networks:
       services:
         ipv4_address: 173.17.0.190
