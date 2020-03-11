@@ -45,9 +45,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Nueva Conexión</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <span onclick="document.getElementById('newMessageModel').style.display='none'" class="w3-button w3-display-topright">×</span>
                 </div>
                 <div class="modal-body">
                     <form  action="/api/send_connection_request" method="POST" target="_self">
@@ -58,9 +56,6 @@
                         <input class="w3-btn w3-black w3-border" style="display:block;margin:auto;" type="submit" value="Enviar petición de conexión">
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
             </div>
         </div>
     </div>
@@ -70,9 +65,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Enviar Mensaje</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <span onclick="document.getElementById('newMessageModel').style.display='none'" class="w3-button w3-display-topright">×</span>
                 </div>
                 <div class="modal-body">
                     <form action="/api/send_message" method="POST" target="_self">
@@ -90,9 +83,6 @@
                         <input class="w3-btn w3-white w3-border" style="display:block;margin:auto;" type="submit" value="Enviar Mensaje">
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
             </div>
         </div>
     </div>
@@ -106,7 +96,7 @@
 </div>
 <footer class="page-footer font-small blue">
     <div class="footer-copyright text-center py-3">Mi did es:
-        <p><%=endpointDid%></p>
+        <a><%=endpointDid%></a>
     </div>
 </footer>
 
