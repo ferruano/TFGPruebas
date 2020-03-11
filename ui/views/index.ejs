@@ -42,6 +42,13 @@
         #buttonAbajo {
             margin-top: 10em;
         }
+        footer {
+            position:fixed;
+            left:0px;
+            bottom:0px;
+            height:30px;
+            width:100%;
+        }
     </style>
 </head>
 <body>
@@ -75,52 +82,9 @@
 </nav>
 <div id="container">
     <!-- Modal de Nueva Conexion-->
-    <div class="modal" id="newRelationshipModel" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Nueva Conexión</h5>
-                    <span onclick="document.getElementById('newMessageModel').style.display='none'" class="w3-button w3-display-topright">×</span>
-                </div>
-                <div class="modal-body">
-                    <form  action="/api/send_connection_request" method="POST" target="_self">
-                        <div class="form-group">
-                            <label for="formGroupExampleInput">Endpoint DID:</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" name="did" required>
-                        </div>
-                        <input class="w3-btn w3-black w3-border" style="display:block;margin:auto;" type="submit" value="Enviar petición de conexión">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    <%include modalConexion.ejs%>
     <!-- Modal de Nuevo Mensaje-->
-    <div class="modal" id="newMessageModel" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Enviar Mensaje</h5>
-                    <span onclick="document.getElementById('newMessageModel').style.display='none'" class="w3-button w3-display-topright">×</span>
-                </div>
-                <div class="modal-body">
-                    <form action="/api/send_message" method="POST" target="_self">
-                        <div class="w3-section">
-                            Destinatario: <input type="text" class="form-control" id="send_message_form_did" placeholder="name@example.com" name="did" value="<%=endpointDid%>">
-                        </div>
-                        <div class="w3-section">
-                            Mensaje: <textarea class="form-control" id="send_message_form_message"  rows="6">
-                                        {
-                                                "type":"SOME_TYPE",
-                                                "message":"test"
-                                        }
-                                     </textarea>
-                        </div>
-                        <input class="w3-btn w3-white w3-border" style="display:block;margin:auto;" type="submit" value="Enviar Mensaje">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+   <%include modalMessage.ejs%>
     <div class="w3-row-padding w3-center w3-margin-top">
         <% include credentials.ejs %>
         <% include proofs.ejs %>
