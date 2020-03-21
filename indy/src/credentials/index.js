@@ -5,7 +5,7 @@ const indy = require('../../index.js');
 const MESSAGE_TYPES = {
     OFFER: "urn:sovrin:agent:message_type:sovrin.org/credential_offer",
     REQUEST: "urn:sovrin:agent:message_type:sovrin.org/credential_request",
-    CREDENTIAL: "urn:sovrin:agent:message_type:sovrin.org/credential"
+    CREDENTIAL: "CREDENCIAL"
 };
 exports.MESSAGE_TYPES = MESSAGE_TYPES;
 
