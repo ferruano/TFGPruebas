@@ -5,7 +5,7 @@ const indy = require('../../index.js');
 const MESSAGE_TYPES = {
     OFFER: "urn:sovrin:agent:message_type:sovrin.org/credential_offer",
     REQUEST: "urn:sovrin:agent:message_type:sovrin.org/credential_request",
-    CREDENTIAL: "CREDENCIAL"
+    CREDENTIAL: "urn:sovrin:agent:message_type:sovrin.org/credential"
 };
 exports.MESSAGE_TYPES = MESSAGE_TYPES;
 
@@ -57,23 +57,23 @@ exports.acceptRequest = async function(theirDid, encryptedMessage) {
     for(let attr of schema.attrNames) {
         let value;
         switch(attr) {
-            case "nombre":
+            case "name":
                 value = await indy.pairwise.getAttr(theirDid, 'name') || "Alice";
                 break;
-            case "grado":
-                value = "Ingenieria de tecnologia y servicios de telecomunicación";
+            case "degree":
+                value = "Bachelor of Science, Marketing";
                 break;
-            case "estado":
-                value = "graduado";
+            case "status":
+                value = "graduated";
                 break;
             case "ssn":
                 value = "123-45-6789";
                 break;
-            case "año":
-                value = "2018";
+            case "year":
+                value = "2015";
                 break;
-            case "nota":
-                value = "7.2";
+            case "average":
+                value = "5";
                 break;
             default:
                 value = "someValue";
@@ -88,7 +88,6 @@ exports.acceptRequest = async function(theirDid, encryptedMessage) {
     await indy.crypto.sendAnonCryptedMessage(theirEndpointDid, message);
     indy.store.pendingCredentialOffers.delete(pendingCredOfferId);
 };
-
 
 exports.acceptCredential = async function(theirDid, encryptedMessage) {
     let myDid = await indy.pairwise.getMyDid(theirDid);

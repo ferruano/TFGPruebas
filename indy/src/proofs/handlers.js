@@ -1,5 +1,5 @@
 'use strict';
-const indy = require('../../index');
+const indy = require('../../../indy');
 const sdk = require('indy-sdk');
 
 exports.request = async function(message) {

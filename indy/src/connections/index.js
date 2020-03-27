@@ -38,6 +38,13 @@ exports.prepareRequest = async function (theirEndpointDid) {
 exports.acceptRequest = async function (theirEndpointDid, theirDid, requestNonce) {
     let [myDid, myVerkey] = await sdk.createAndStoreMyDid(await indy.wallet.get(), {});
 
+    let theirVerkey = await sdk.keyForDid(await indy.pool.get(), await indy.wallet.get(), theirDid);
+
+    // await sdk.storeTheirDid(await indy.wallet.get(), {
+    //     did: theirDid,
+    //     verkey: theirVerkey
+    // });
+
     let meta = JSON.stringify({
         theirEndpointDid: theirEndpointDid,
         verified: false // Indicates that the owner of the agent has confirmed they want to stay connected with this person.
@@ -113,3 +120,11 @@ exports.acceptAcknowledgement = async function (theirDid, encryptedMessage) {
 
     await indy.proofs.sendRequest(myDid, theirDid, 'General-Identity');
 };
+
+// accept identity proof request, send identity proof and own proof request on identity
+
+// accept identity proof (use same above to respond to identity proof)
+
+// show in UI unverified relationships to be verified by the user.
+
+// Relationship must be verified in order to issue credential to them.
