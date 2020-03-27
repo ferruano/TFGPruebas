@@ -113,11 +113,3 @@ exports.acceptAcknowledgement = async function (theirDid, encryptedMessage) {
 
     await indy.proofs.sendRequest(myDid, theirDid, 'General-Identity');
 };
-
-// accept identity proof request, send identity proof and own proof request on identity
-
-// accept identity proof (use same above to respond to identity proof)
-
-// show in UI unverified relationships to be verified by the user.
-
-// Relationship must be verified in order to issue credential to them.

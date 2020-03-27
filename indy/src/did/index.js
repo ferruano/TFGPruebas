@@ -24,14 +24,70 @@ exports.getEndpointDid = async function() {
             }
         }
         if(!endpointDid) {
-            await exports.createEndpointDid();
+            let stewardWalletName = `stewardWalletFor:${config.walletName}`;
+            try {
+                await sdk.createWallet({id: stewardWalletName}, {key: 'whatever'});
+            } catch (e) {
+                if (e.message !== 'WalletAlreadyExistsError') {
+                    console.warn('create wallet failed with message: ' + e.message);
+                    throw e;
+                }
+            } finally {
+                console.info('wallet already exist, try to open wallet');
+            }
+
+            stewardWallet = await sdk.openWallet(
+                {id: stewardWalletName},
+                {key: 'whatever'}
+            );
+
+            let stewardDidInfo = {
+                'seed': '000000000000000000000000Steward1'
+            };
+
+            [stewardDid, stewardKey] = await sdk.createAndStoreMyDid(stewardWallet, stewardDidInfo);
+
+            [endpointDid, publicVerkey] = await sdk.createAndStoreMyDid(await indy.wallet.get(), {});
+            let didMeta = JSON.stringify({
+                primary: true,
+                schemas: [],
+                credential_definitions: []
+            });
+            await sdk.setDidMetadata(await indy.wallet.get(), endpointDid, didMeta);
+
+            await indy.pool.sendNym(await indy.pool.get(), stewardWallet, stewardDid, endpointDid, publicVerkey, "TRUST_ANCHOR");
+            await indy.pool.setEndpointForDid(endpointDid, config.endpointDidEndpoint);
+            await indy.crypto.createMasterSecret();
+
+            await issueGovernmentIdCredential();
         }
     }
     return endpointDid;
 };
 
 exports.createEndpointDid = async function () {
-    await setupSteward();
+    let stewardWalletName = `stewardWalletFor:${config.walletName}`;
+    try {
+        await sdk.createWallet({id: stewardWalletName}, {key: 'whatever'});
+    } catch (e) {
+        if (e.message !== 'WalletAlreadyExistsError') {
+            console.warn('create wallet failed with message: ' + e.message);
+            throw e;
+        }
+    } finally {
+        console.info('wallet already exist, try to open wallet');
+    }
+
+    stewardWallet = await sdk.openWallet(
+        {id: stewardWalletName},
+        {key: 'whatever'}
+    );
+
+    let stewardDidInfo = {
+        'seed': '000000000000000000000000Steward1'
+    };
+
+    [stewardDid, stewardKey] = await sdk.createAndStoreMyDid(stewardWallet, stewardDidInfo);
 
     [endpointDid, publicVerkey] = await sdk.createAndStoreMyDid(await indy.wallet.get(), {});
     let didMeta = JSON.stringify({

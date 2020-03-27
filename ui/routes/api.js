@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const indy = require('../../indy/index');
+const indy = require('../../indy');
 const auth = require('../authentication');
 
 router.get('/', function (req, res, next) {

@@ -37,7 +37,7 @@ module.exports = function(config) { //factory function creates object and return
                             res.status(202).send("Accepted");
                         }
                     })
-                } else {
+                } else {credentials.handlers.request
                     handler(decryptedMessage)
                         .then((data) => {
                             res.status(202).send("Accepted");

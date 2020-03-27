@@ -28,15 +28,6 @@ exports.enableDefaultHandlers = function(indyHandler) {
     indyHandler.defineHandler(MESSAGE_TYPES.CONNECTIONS_REJECT_REQUEST, exports[MESSAGE_TYPES.CONNECTIONS_REJECT_REQUEST]);
 };
 
-// exports.httpHandler = async function(req, res) {
-//     try {
-//         let elements = req.body;
-//         await
-//         res.status(202).send();
-//     } catch(e) {
-//         res.status(500).send();
-//     }
-// };
 
 exports[MESSAGE_TYPES.SEND_MESSAGE] = async function(formElements) {
     let message = JSON.parse(formElements.message);
